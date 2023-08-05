@@ -1,0 +1,15 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@font-face {
+    font-family: 'Gotham';
+    font-display: swap;
+    src: url('../font/GothamBold.eot'),
+    url('../font/GothamBold.woff') format('woff'),
+    url('../font/GothamBold.woff2') format('woff2'),
+    url('../font/GothamBold.eot.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
