@@ -1,1 +1,3 @@
-console.log('Running');
+jQuery(document).ready(function() {
+   
+});

@@ -23,6 +23,7 @@ function blog_site_scripts() {
     wp_enqueue_script('bootstrap.bundle.min', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js?v=' . time(), array(), false, true);
     wp_enqueue_script('scripts', get_template_directory_uri() . '/assets/js/scripts.js?v=' . time(), array(), false, true);
     wp_enqueue_script('jquery');
+    wp_enqueue_script('slick.min', get_template_directory_uri() . '/assets/js/slick.min.js?v=' . time(), array(), false, true);
 }
 
 function hide_admin_bar_for_all() {
