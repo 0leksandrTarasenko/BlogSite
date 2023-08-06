@@ -30,3 +30,48 @@ function hide_admin_bar_for_all() {
     show_admin_bar(false);
 }
 add_action('after_setup_theme', 'hide_admin_bar_for_all');
+
+
+include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+include_once(ABSPATH . 'wp-content/plugins/advanced-custom-fields-pro/acf.php');
+
+
+/**
+ * Activate menus for admin
+ */
+add_theme_support( 'menus' );
+
+/**
+ * Option page
+ */
+$theme_options = wp_cache_get("theme_options");
+
+$sub_page = array(
+    'title' => 'Header',
+    'slug' => 'header',
+    'capability' => 'edit_dashboard'
+);
+acf_add_options_sub_page($sub_page);
+
+$sub_page = array(
+	'title' => 'Footer',
+	'slug' => 'footer',
+	'capability' => 'edit_dashboard'
+);
+acf_add_options_sub_page($sub_page);
+
+acf_set_options_page_menu("Other");
+acf_set_options_page_title("Other");
+add_action( 'plugins_loaded', 'add_my_options_page' );
+
+/**
+ * Enable shortcodes for menu navigation.
+ */
+if ( ! has_filter( 'wp_nav_menu', 'do_shortcode' ) ) {
+    add_filter( 'wp_nav_menu', 'shortcode_unautop' );
+    add_filter( 'wp_nav_menu', 'do_shortcode', 11 );
+}
+
+
+
+
