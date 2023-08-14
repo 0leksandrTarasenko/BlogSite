@@ -31,8 +31,6 @@ function hide_admin_bar_for_all() {
 }
 add_action('after_setup_theme', 'hide_admin_bar_for_all');
 
-
-include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 include_once(ABSPATH . 'wp-content/plugins/advanced-custom-fields-pro/acf.php');
 
 
@@ -75,8 +73,6 @@ if ( ! has_filter( 'wp_nav_menu', 'do_shortcode' ) ) {
     add_filter( 'wp_nav_menu', 'do_shortcode', 11 );
 }
 
-
-
 /*Shortcode Menu*/
 /* [menu name=menu_name] */
 function print_menu_shortcode($atts) {
@@ -91,4 +87,40 @@ function print_menu_shortcode($atts) {
 add_shortcode ('menu', 'print_menu_shortcode');
 
 
+/*Add CPT Case Studies*/
+add_action('init', 'my_custom_init');
+function my_custom_init(){
 
+     //Case Studies
+     register_post_type('case-studies', array(
+        'labels'             => array(
+            'name'               => 'Case Studies',
+            'singular_name'      => 'Case Study',
+            'add_new'            => 'Add new',
+            'add_new_item'       => 'Add a new Case Study',
+            'edit_item'          => 'Edit Case Study',
+            'new_item'           => 'New Case Study',
+            'view_item'          => 'View Case Study',
+            'search_items'       => 'Search Case Study',
+            'not_found'          => 'No items found',
+            'not_found_in_trash' => 'No items found',
+            'parent_item_colon'  => '',
+            'menu_name'          => 'Case Studies'
+        ),
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'has_archive'        => true,
+        'query_var'          => true,
+        'rewrite'            => true,
+        'capability_type'    => 'post',
+        'hierarchical'       => false,
+        'menu_position' => 4,
+        'menu_icon' => 'dashicons-megaphone',
+        'supports'           => array('title','editor','author','thumbnail','excerpt','comments')
+    ) );
+
+}
+
+/*Load More Button*/
