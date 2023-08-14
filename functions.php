@@ -44,7 +44,11 @@ add_theme_support( 'menus' );
 /**
  * Option page
  */
-$theme_options = wp_cache_get("theme_options");
+function add_my_options_page() {
+    if( function_exists('acf_add_options_page') ) {
+      acf_add_options_page();
+    }
+  }
 
 $sub_page = array(
     'title' => 'Header',
@@ -62,7 +66,6 @@ acf_add_options_sub_page($sub_page);
 
 acf_set_options_page_menu("Other");
 acf_set_options_page_title("Other");
-add_action( 'plugins_loaded', 'add_my_options_page' );
 
 /**
  * Enable shortcodes for menu navigation.
@@ -72,6 +75,20 @@ if ( ! has_filter( 'wp_nav_menu', 'do_shortcode' ) ) {
     add_filter( 'wp_nav_menu', 'do_shortcode', 11 );
 }
 
+
+
+/*Shortcode Menu*/
+/* [menu name=menu_name] */
+function print_menu_shortcode($atts) {
+    $custom_menu = shortcode_atts( array(
+        'name' => '',
+    ), $atts, 'menu' );
+
+//    echo $custom_menu['name'];
+    return wp_nav_menu( array( 'menu' => $custom_menu['name'], 'menu_class' => 'custom_menu_shortcode', 'echo' => false ) );
+
+}
+add_shortcode ('menu', 'print_menu_shortcode');
 
 
 
