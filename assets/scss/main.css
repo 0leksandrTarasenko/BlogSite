@@ -1,0 +1,250 @@
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  padding: 1.8rem 0;
+}
+header * {
+  color: #ffffff;
+}
+header .menu-items {
+  font-size: 0.9rem;
+}
+header .menu-items ul.menu {
+  display: flex;
+  align-items: center;
+}
+header .menu-items ul.menu > li:hover > a > span {
+  color: #1565D8;
+}
+header .menu-items ul.menu > li:hover > a::after {
+  color: #1565D8 !important;
+}
+header .menu-items ul.menu li span {
+  transition: all 0.3s ease;
+}
+header .menu-items ul.menu > li {
+  position: relative;
+}
+header .menu-items ul.menu > li + li {
+  margin-left: 2rem;
+}
+header .menu-items ul.menu > li.menu-item-has-children > a::after {
+  content: "\e5cf";
+  font-family: "Material Icons";
+  display: inline-block;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  vertical-align: bottom;
+}
+header .menu-items ul.menu > li.menu-item-has-children.open a::after {
+  transform: rotate(180deg);
+}
+header .menu-items ul.menu > li .sub-menu {
+  position: absolute;
+  display: none;
+  left: 0;
+  z-index: 1000;
+  margin: 10px 0 0;
+}
+header .menu-items ul.menu > li a:hover {
+  color: #1565D8;
+}
+header .menu-items ul.sub-menu > li + li {
+  margin-top: 5px;
+}
+header .menu-items ul.sub-menu > li:hover:not(.menu-item-has-children) > a > span {
+  color: #1565D8;
+}
+header .menu-items .header-button {
+  margin-left: 2rem;
+}
+header .menu-items .header-button .header-button-link {
+  padding: 10px 17.24px;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  font-weight: 700;
+}
+header .menu-items .header-button .header-button-link:hover {
+  background: #1565D8;
+  border-color: #1565D8;
+}
+
+@media (max-width: 1023px) and (max-width: 1023px) {
+  header .menu-items ul.sub-menu > li:hover:not(.menu-item-has-children) > a > span, header .menu-items ul.menu > li:hover > a > span {
+    color: #183B56 !important;
+  }
+  header .logo-col {
+    width: 25%;
+  }
+  header .menu-col {
+    width: 75%;
+  }
+  header .menu-items ul.menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    max-width: 200px;
+    height: 100%;
+    background-color: #1565D8;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+  }
+  .menu-open.main-menu ul.menu {
+    display: block;
+  }
+  header .menu-items ul.menu > li + li {
+    margin-left: 0;
+  }
+  .menu-open.main-menu ul.menu {
+    left: 0;
+  }
+  .menu-open.main-menu ul.menu > li.menu-item-has-children > a {
+    pointer-events: none;
+  }
+  .menu-open.main-menu ul.menu > li.menu-item-has-children:hover > a > span {
+    color: #ffffff !important;
+  }
+  header .menu-items ul.menu > li.menu-item-has-children > a::after {
+    display: none;
+  }
+  .menu-open.main-menu ul.menu > li {
+    margin: 1rem;
+    position: relative;
+  }
+  header .main-menu ul.sub-menu {
+    display: block !important;
+    padding-left: 15px;
+    position: relative !important;
+    margin: 1rem !important;
+    padding: 0 !important;
+  }
+  .menu-open.main-menu ul.sub-menu > li {
+    margin: 10px 0;
+  }
+  .burger-icon {
+    width: 25px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+  .burger-icon .burger-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+  }
+  .burger-icon .burger-line:nth-child(1) {
+    top: 0;
+  }
+  .burger-icon .burger-line:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .burger-icon .burger-line:nth-child(3) {
+    bottom: 0;
+  }
+  .menu-open .burger-line:nth-child(1) {
+    transform: rotate(-45deg) translateY(0);
+  }
+  .menu-open .burger-line:nth-child(3) {
+    transform: rotate(45deg) translateY(0);
+  }
+  .menu-open .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-open .burger-line:nth-child(1) {
+    top: 46%;
+  }
+  .menu-open .burger-line:nth-child(3) {
+    bottom: 46%;
+  }
+}
+@media (max-width: 767px) {
+  .menu-open.main-menu ul.menu > li {
+    margin: 1rem 0.5rem;
+  }
+  header .menu-items .header-button {
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 359px) {
+  header .menu-items ul.menu {
+    max-width: 125px;
+  }
+  header .main-menu ul.sub-menu {
+    margin: 1rem 0.5rem !important;
+  }
+}
+html {
+  font-size: 20px;
+  scroll-behavior: smooth !important;
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  padding: 0 !important;
+  position: relative;
+  opacity: 1 !important;
+  box-sizing: border-box;
+}
+html body *, html body *:before, html body *:after {
+  box-sizing: border-box;
+}
+html body input, html body button, html body textarea {
+  font-family: inherit;
+}
+html body img {
+  max-width: 100%;
+  height: auto;
+}
+html body input::-ms-clear {
+  display: none;
+}
+html body a:focus, html body a:active {
+  outline: none;
+}
+html body :focus, html body :active {
+  outline: none;
+}
+html body a, html body a:visited, html body [type=button], html body [type=reset], html body [type=submit], html body button {
+  transition: all 0.3s ease !important;
+  text-decoration: none;
+}
+html body a:hover {
+  text-decoration: none;
+}
+html body h1, html body h2, html body h3, html body h4, html body h5, html body h6 {
+  font-family: "Gotham", sans-serif;
+}
+html body ul {
+  margin: 0;
+  padding: 0;
+}
+html body ul li {
+  list-style: none !important;
+}
+html body .container-default {
+  max-width: 1167px;
+}
+
+.search-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-clip-path: ellipse(100% 100% at top);
+  clip-path: ellipse(100% 100% at top);
+  padding-top: 11rem;
+}
+.search-section .main-title * {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}/*# sourceMappingURL=main.css.map */

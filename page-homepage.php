@@ -2,52 +2,57 @@
 /*
 Template name: Homepage
 */
+$header_title = get_field("header_title");
 $case_study_id = get_field("case_study");
 $custom_post_excerpt = get_the_excerpt($case_study_id);
 $custom_post_thumbnail = get_the_post_thumbnail($case_study_id);
 $custom_post_title = get_the_title($case_study_id);
+$case_study_permalink = get_permalink($case_study_id);
+$header_background_image = get_field("header_background_image");
 ?>
 
 <?php get_header(); ?>
 
 <div class="homepage-template">
-    <div class="search">
-        <?php
-        // Search
-        $args = array(
-            'post_type' => array( 'post', 'case_studies' ),
-        );
-        echo get_search_form( $args );
-
-        // Popular tags for filtering
-        $popular_tags = get_terms( array(
-            'taxonomy' => 'post_tag',
-            'orderby' => 'count',
-            'order' => 'DESC',
-            'number' => 3,
-        ) );
-
-        if ( ! empty( $popular_tags ) && ! is_wp_error( $popular_tags ) ) {
-            echo '<div class="popular-tags">';
-            echo '<h2>Popular Tags:</h2>';
-            echo '<ul>';
-            foreach ( $popular_tags as $tag ) {
-                $tag_link = esc_url( get_tag_link( $tag->term_id ) );
-                echo '<li><a href="' . $tag_link . '" class="tag-link" data-tag="' . esc_attr( $tag->name ) . '">' . esc_html( $tag->name ) . '</a></li>';
-            }
-            echo '</ul>';
-            echo '</div>';
-        }
-        ?>
-    </div>
-    <?php if($case_study_id){ ?>
-        <section class="single-case-study-section hy_fadeIn">
-            <div class="container-fluid container-default">
-                <div class="row">
-                    <div class="col-lg-12 case-study-col">
+    <section class="search-section" style="<?php if($header_background_image){ ?>background-image:url(<?php echo $header_background_image['url']; ?>);<?php } ?>" >
+        <div class="container-fluid container-default">
+            <div class="row">
+                <div class="col-lg-12">
+                    <?php if($header_title){ ?>
+                        <div class="main-title">
+                            <?php echo $header_title; ?>
+                        </div>     
+                    <?php } ?>
+                    <div class="search">
+                        <?php
+                        // Search
+                        $args = array(
+                            'post_type' => array( 'post', 'case_studies' ),
+                        );
+                        echo get_search_form( $args );
+                        // Popular tags for filtering
+                        $popular_tags = get_terms( array(
+                            'taxonomy' => 'post_tag',
+                            'orderby' => 'count',
+                            'order' => 'DESC',
+                            'number' => 3,
+                        ) );
+                        if ( ! empty( $popular_tags ) && ! is_wp_error( $popular_tags ) ) {
+                            echo '<div class="popular-tags">';
+                            echo '<h2>Popular Tags:</h2>';
+                            echo '<ul>';
+                            foreach ( $popular_tags as $tag ) {
+                                $tag_link = esc_url( get_tag_link( $tag->term_id ) );
+                                echo '<li><a href="' . $tag_link . '" class="tag-link" data-tag="' . esc_attr( $tag->name ) . '">' . esc_html( $tag->name ) . '</a></li>';
+                            }
+                            echo '</ul>';
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
+                    <?php if($case_study_id){ ?>
                         <div class="case-study-block">
                             <div class="case-study-content">
-                                <?php $case_study_permalink = get_permalink($case_study_id); ?>
                                 <div class="case-study-thumbnail"><a href="<?php echo $case_study_permalink; ?>"><?php echo $custom_post_thumbnail; ?></a></div>
                                 <div class="case-study-info">
                                     <div class="case-study-title">
@@ -58,10 +63,11 @@ $custom_post_title = get_the_title($case_study_id);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 
         <section class="single-section hy_fadeIn">
@@ -231,9 +237,6 @@ $custom_post_title = get_the_title($case_study_id);
             </div>
         </section>
 
-
-
-    <?php } ?>
 </div>
 
 

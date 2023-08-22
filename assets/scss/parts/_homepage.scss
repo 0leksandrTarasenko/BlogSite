@@ -1,0 +1,15 @@
+.search-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-clip-path: ellipse(100% 100% at top);
+    clip-path: ellipse(100% 100% at top);
+    padding-top: 11rem;
+    .main-title {
+        * {
+            font-size: 2.4rem;
+            line-height: 3rem;
+            letter-spacing: 0.2px;
+            color: #ffffff;
+        }
+    }
+}

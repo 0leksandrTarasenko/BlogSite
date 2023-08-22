@@ -10,6 +10,7 @@ if (have_posts()) : while (have_posts()) : the_post();
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <?php echo the_content(); ?>
+                    <div class="default-page">default-page</div>
                 </div>
             </div>
         </div>

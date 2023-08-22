@@ -7,8 +7,7 @@ jQuery(document).ready(function($) {
     });
 });
 
-
-/*Load mode article button*/
+/*Load more article button*/
 jQuery(document).ready(function() {
     var page = 1;
 
@@ -19,22 +18,55 @@ jQuery(document).ready(function() {
 
     function loadArticles(page) {
         jQuery.ajax({
-            url: "/wp-content/themes/BlogSite/ajax/load_articles.php", // Правильний абсолютний шлях
+            url: "/wp-content/themes/BlogSite/ajax/load_articles.php",
             type: "GET",
             data: { page: page },
             success: function(data) {
-                jQuery("#article-container").append(data); // Додаємо завантажені статті
+                jQuery("#article-container").append(data);
             }
         });
     }
 });
 
 
- // Attach a click event handler to the search submit button
-jQuery(document).ready(function($) {
-    $('#searchsubmit').on('click', function(event) {
-      event.preventDefault();
-      window.location.href = '/blog/';
+// Header-menu
+document.addEventListener('DOMContentLoaded', function () {
+    const menuItems = document.querySelectorAll('.menu-item-has-children');
+    menuItems.forEach(function (menuItem) {
+        const link = menuItem.querySelector('a');
+        const subMenu = menuItem.querySelector('.sub-menu');
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            if (subMenu.style.display === 'block') {
+                subMenu.style.display = 'none';
+                menuItem.classList.remove('open');
+            } else {
+                closeOpenMenus();
+                subMenu.style.display = 'block';
+                menuItem.classList.add('open');
+            }
+        });
     });
-  });
+    function closeOpenMenus() {
+        menuItems.forEach(function (menuItem) {
+            menuItem.querySelector('.sub-menu').style.display = 'none';
+            menuItem.classList.remove('open');
+        });
+    }
+});
+
+
+// Burger menu
+jQuery(document).ready(function($) {
+    $('.burger-menu').click(function() {
+        $('.main-menu').toggleClass('menu-open');
+    });
+});
+
+
+
+
+
+
+
   
