@@ -1,0 +1,22 @@
+.title-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-clip-path: ellipse(100% 100% at top);
+    clip-path: ellipse(100% 100% at top);
+    padding-top: 11rem;
+    padding-bottom: 11rem;
+    margin-bottom: 3rem;
+    .title {
+        * {
+            color: #ffffff;
+        }
+    }
+}
+
+/*Responsive*/
+@media (max-width: 1023px) {
+    .title-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}

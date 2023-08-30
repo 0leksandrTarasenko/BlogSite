@@ -1,0 +1,48 @@
+.blog-page {
+    .blog-title-section {
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-clip-path: ellipse(100% 100% at top);
+        clip-path: ellipse(100% 100% at top);
+        padding-top: 11rem;
+        padding-bottom: 11rem;
+        .page-title {
+            text-align: center;
+            color: #ffffff;
+        }
+    }
+    .recent-articles-section {
+        margin-bottom: 10rem;
+        .recent-articles {
+            gap: 1.5rem;
+            .recent-article {
+                margin-left: 0 !important;
+            }
+        }
+    }
+}
+
+/*Responsive*/
+@media (max-width: 1279px) {
+    .blog-page {
+        .recent-articles-section {
+            .recent-articles {
+                gap: 0.99rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .blog-page {
+        .blog-title-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .recent-articles-section {
+            .recent-articles {
+                gap: 0.7rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.single-post {
+    .blog-title-section {
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-clip-path: ellipse(100% 100% at top);
+        clip-path: ellipse(100% 100% at top);
+        padding-top: 11rem;
+        padding-bottom: 11rem;
+        .blog-top {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1rem;
+        }
+        .blog-post-title {
+            text-align: center;
+        }
+        .author-block {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 3rem;
+        }
+    }
+    .blog-content-section {
+        margin-top: 3rem;
+    }
+}

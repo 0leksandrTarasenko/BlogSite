@@ -12,13 +12,12 @@ $social_instagram_link = get_field("social_instagramm_link", 'options');
 $social_google_link = get_field("social_google_link", 'options');
 $social_youtube_link = get_field("social_youtube_link", 'options');
 $copyright_content = get_field("copyright_content", 'options');
+$footer_background = get_field("footer_background", 'options');
 ?>
 
-<footer class="footer hy_fadeIn">
-
-    <div class="container-fluid">
-
-        <div class="row">
+<footer class="footer" style="<?php if($footer_background){ ?>background-image:url(<?php echo $footer_background['url']; ?>);<?php } ?>">
+    <div class="container-fluid container-default">
+        <div class="row form-row">
             <div class="col-lg-6">
                 <div class="footer-title">
                     <?php if($footer_title){ ?>
@@ -37,22 +36,24 @@ $copyright_content = get_field("copyright_content", 'options');
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="footer-image">
-                    <?php if($footer_image){ ?>
-                        <img src="<?php echo $footer_image['url']; ?>" alt="<?php echo $footer_image['title']; ?>" />          
-                    <?php } ?>
-                </div>
-                <div class="footer-image-text">
-                    <?php if($footer_image_text){ ?>
-                        <?php echo $footer_image_text; ?>             
-                    <?php } ?>
+                <div class="footer-right-side">
+                    <div class="footer-image">
+                        <?php if($footer_image){ ?>
+                            <img src="<?php echo $footer_image['url']; ?>" alt="<?php echo $footer_image['title']; ?>" />          
+                        <?php } ?>
+                    </div>
+                    <div class="footer-image-text">
+                        <?php if($footer_image_text){ ?>
+                            <?php echo $footer_image_text; ?>             
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
   
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-sm-4">
                 <div class="footer-logo">
                     <?php if($footer_logo){ ?>
                         <a class="homepage_link" href="<?php bloginfo('url'); ?>"><img src="<?php echo $footer_logo['url']; ?>" alt="<?php echo $footer_logo['title']; ?>" /></a>          
@@ -83,14 +84,18 @@ $copyright_content = get_field("copyright_content", 'options');
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-sm-8">
                 <?php if(is_array($footer_menus)){ ?>
                     <div class="container-fluid footer-menus-block">
-                        <div class="row">
+                        <div class="row justify-content-between">
                         <?php foreach($footer_menus as $footer_menus_item) { ?>
-                            <div class="col-lg-2">
-                            <?php echo $footer_menus_item['title']; ?>
-                                <?php echo $footer_menus_item['description']; ?>
+                            <div class="col-lg-3 col-sm-6 col-6">
+                                <div class="sub-menu-title">
+                                    <?php echo $footer_menus_item['title']; ?>
+                                </div>
+                                <div class="sub-menu">
+                                    <?php echo $footer_menus_item['description']; ?>
+                                </div>
                             </div>
                         <?php } ?>
                         </div>

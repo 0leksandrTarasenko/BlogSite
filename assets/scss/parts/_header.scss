@@ -1,4 +1,9 @@
 $color-blue: #1565D8;
+%transition {
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
 
 header {
     position: absolute;
@@ -27,9 +32,7 @@ header {
             }
             li {
                 span {
-                    -webkit-transition: all 0.3s ease;
-                    -ms-transition: all 0.3s ease;
-                    transition: all 0.3s ease;
+                  @extend %transition;
                 }
             }
             > li {
@@ -43,9 +46,7 @@ header {
                         font-family: 'Material Icons';
                         display: inline-block;
                         font-weight: 600;
-                        -webkit-transition: all 0.3s ease;
-                        -ms-transition: all 0.3s ease;
-                        transition: all 0.3s ease;
+                        @extend %transition;
                         color: #ffffff;
                         vertical-align: bottom;
                     }
@@ -191,7 +192,7 @@ header {
           opacity: 0;
         }
         &:nth-child(1) {
-          top: 46%;
+          top: 45%;
         }
         &:nth-child(3) {
           bottom: 46%;

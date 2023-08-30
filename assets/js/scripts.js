@@ -1,9 +1,21 @@
 /*Homepage-slider*/
 jQuery(document).ready(function($) {
-    $('.slick-slider').slick({
-        slidesToShow: 1,
+    jQuery('.slick-slider').slick({
+        centerMode: true,
+        centerPadding: '0',
+        slidesToShow: 1, 
         slidesToScroll: 1,
-        infinite: false
+        infinite: true,
+        adaptiveHeight: true,
+        responsive: [
+            {
+              breakpoint: 1279,
+              settings: {
+                dots: true,
+                arrows: false,
+              }
+            }
+          ]
     });
 });
 
@@ -62,6 +74,43 @@ jQuery(document).ready(function($) {
         $('.main-menu').toggleClass('menu-open');
     });
 });
+
+//Search placeholder
+document.addEventListener("DOMContentLoaded", function() {
+    var searchInput = document.getElementById('s');
+    if (searchInput) {
+        searchInput.placeholder = "Search article";
+    }
+});
+
+//Load more loading
+document.addEventListener("DOMContentLoaded", function() {
+    const loadMoreButtons = document.querySelectorAll(".load-more");
+    loadMoreButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const loadText = button.querySelector(".load-text");
+            const arrowIcon = button.querySelector(".material-icons");
+            
+            const originalText = loadText.textContent;
+            const originalIcon = arrowIcon.textContent;
+
+            loadText.textContent = "Loading...";
+            arrowIcon.style.display = "none";
+
+            const timeout = setTimeout(function() {
+                loadText.textContent = originalText;
+                arrowIcon.style.display = "inline";
+            }, 3000);
+
+            button.addEventListener("mouseup", function() {
+                clearTimeout(timeout);
+            });
+        });
+    });
+});
+
+
+
 
 
 

@@ -79,6 +79,8 @@ function print_menu_shortcode($atts) {
 }
 add_shortcode ('menu', 'print_menu_shortcode');
 
+// Add theme support for post thumbnails
+add_theme_support('post-thumbnails');
 
 /*Add CPT Case Studies*/
 add_action('init', 'my_custom_init');
@@ -115,6 +117,7 @@ function my_custom_init(){
     ) );
 
 }
+
 
 
 
